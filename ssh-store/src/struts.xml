@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> 
+
+	<package name="ssh" namespace="/" extends="struts-default">
+		
+		<action name="inter_*"  class="userAction" method="{1}">
+			<result name="out">/index.jsp</result>
+		</action>
+		
+		<action name="user_*" class="userAction" method="{1}">
+		 	<result name="input">/index.jsp</result>
+		 	<result name="success" type="redirect">/product-index.jsp</result>
+		 	<result name="logout" type="redirect">/index.jsp</result>
+		 </action>
+	
+		 <action name="product_*" class="productAction" method="{1}">
+		 	<result name="findAll">/product-list.jsp</result>
+		 	<result name="saveUI">/product-add.jsp</result>
+		 	<result name="saveSuccess" type="redirectAction">product_findAll.action</result>
+		 	<result name="updataSuceess" type="redirectAction">product_findAll.action</result>
+		 	<result name="deleteSuccess" type="redirectAction">product_findAll.action</result>
+		 	<result name="editSuccess">/product-updata.jsp</result>
+		 	
+		 </action>
+		 
+		 <action name="seller_*" class="sellerAction" method="{1}">
+		 	<result name="findAll">/seller-list.jsp</result>
+		 	<result name="saveUI">/seller-add.jsp</result>
+		 	<result name="saveSuccess" type="redirectAction">seller_findAll.action</result>
+		 	<result name="updataSuccess" type="redirectAction">seller_findAll.action</result>
+		 	<result name="deleteSuccess" type="redirectAction">seller_findAll.action</result>
+		 	<result name="editSuccess">/seller-updata.jsp</result>
+		 </action>
+		 
+		 
+	</package>
+	
+</struts>    

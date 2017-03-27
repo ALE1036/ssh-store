@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.lee.store.entity.Seller" table="seller">
+ 		<id name="sid" column="sid">
+ 			<generator class="native" />
+ 		</id>
+ 	
+ 		<property name="sname" column="sname" length="20" />
+ 		
+ 		<property name="address" column="address"  />
+ 		
+ 		<property name="phone" column="phone" length="11" />
+ 		
+ 		<set name="pro" cascade="delete" inverse="true">
+ 			<key column="sr" />
+ 			<one-to-many class="com.lee.store.entity.Product" />
+ 		</set>
+ 		
+    </class>
+</hibernate-mapping>
